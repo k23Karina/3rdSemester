@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="hot-item">
+        <div class="hot-item-banner">{{ towar.name }}</div>
+            <div class="hot-item-content" style="background: white;">
+                    <div class="main-flex-items-wrapper" style="align-items: center; width: 80%; margin: auto;">
+                        <div class="main-flex-items-elements" style=" border-radius: 0;">
+                            <img width="20%" src="{{ towar.image }}" alt="">
+                            <div class="info-container">
+                                <div class="text-container">
+                                    <div class="text-wrapper">
+                                        <p class="info-text">Producer: {{ towar.producer }}</p>
+                                    </div>
+                                    <div class="text-wrapper">
+                                        <p class="info-text">Category: {{ towar.category }}</p>
+                                    </div>
+                                    <div class="text-wrapper">
+                                        <p class="info-text">Price: {{ towar.price }} $</p>
+                                    </div>
+                                </div>
+                                 <div class="text-wrapper">
+                                        <p class="info-text">Description: {{ towar.description }} $</p>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="main-flex-items-elements" style="border-radius: 0;">
+                            {% if not request.user.is_authenticated %}
+            <form class="login-form" method="POST" style="background: #004d40; border-radius: 10px;" enctype="multipart/form-data" novalidate>{% csrf_token %}
+                <div class="login-panel-name">Login</div>
+                {{ loginform }}
+                <input type="submit" class="submit-button" value="Login">
+            </form>
+                            {% else %}
+                                <form class="login-form" method="POST" style="background: #004d40; border-radius: 10px;" enctype="multipart/form-data" novalidate>{% csrf_token %}
+                <div class="login-panel-name">Write some date</div>
+                {{ buyform }}
+                <input type="submit" class="submit-button" value="Accept">
+            </form>
+                            {% endif %}
+                        </div>
+                    </div>
+            </div>
+        <div class="hot-item-banner-bottom">
+        </div>
+    </div>
+{% endblock %}

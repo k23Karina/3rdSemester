@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "website/css/style.css" %}" />
+    <link rel="icon" type="image/png" href="{% static "website/images/favicon.png" %}">
+    <title>E-shop</title>
+</head>
+
+<body>
+<!-- Navbar
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <nav class="navbar">
+    <div class="container">
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <a class="navbar-link" style="font-weight: bold; font-size:160%;" href="{% url 'home' %}">E-shop</a>
+        </li>
+        <li class="navbar-item">
+          <a class="navbar-link" href="{% url 'category' %}">Category</a>
+        </li>
+        <li class="navbar-item">
+          <a class="navbar-link" href="#">Support</a>
+        </li>
+                <div class="search-container">
+                    <!-- TODO: Search form -->
+       <form class="search-form" method="post">
+         <input type="text" class="search-input" placeholder="Search">
+       </form>
+    </div>
+    <li class="navbar-item navbar-end-item">
+            {% if request.user.is_authenticated %}
+            <a class="navbar-link" href="{% url 'auth_logout' %}">Logout</a>
+            {%  else %}
+            <a class="navbar-link" href="{% url 'auth_login' %}">Sign In</a>
+            {% endif %}
+        </li>
+      </ul>
+    </div>
+  </nav>
+<!-- Content
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="content">
+      {% block content %}
+
+      {% endblock %}
+  </div>
+      <!-- Footer
+      TODO: Create footer
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      {% block footer %}
+
+      {% endblock %}
+
+</body>
+</html>

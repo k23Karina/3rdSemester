@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="hot-item-content">
+    {% for item in items %}
+                    <div class="main-flex-items-wrapper">
+                        <div class="main-flex-items-elements">
+                            <p class="main-flex-items-elements-name"> {{ item.name }}</p>
+                            <img width="150px" src="{{ item.image }}" alt="">
+                            <div class="info-container">
+                                <div class="text-container">
+                                    <div class="text-wrapper">
+                                        <p class="info-text">Producer: {{ item.producer }}</p>
+                                    </div>
+                                    <div class="text-wrapper">
+                                        <p class="info-text">Category: {{ item.category }}</p>
+                                    </div>
+                                    <div class="text-wrapper">
+                                        <p class="info-text">Price: {{ item.price }} $</p>
+                                    </div>
+                                </div>
+                                <div class="link-container">
+                                    <a href="{% url 'home' %}{{ item.category.name.lower }}/{{ item.id }}" class="main-flex-items-elements-link victoria-one">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+    </div>
+  </div>
+{% endblock %}

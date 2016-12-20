@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="login-panel">
+    <h1 class="sign-in-name">Sign In</h1>
+        <div class="login-container">
+            <div class="login-wrapper">
+            <div class="login-panel-name">Login</div>
+            <form class="login-form" method="POST" enctype="multipart/form-data" novalidate>{% csrf_token %}
+                {{ loginform}}
+                <input type="submit" class="submit-button" value="Login">
+            </form>
+                </div>
+            <div class="register-wrapper">
+            <div class="login-panel-name">Registration</div>
+            <form class="login-form" action="" method="POST" novalidate>{% csrf_token %}
+                {{ registrationform }}
+                <input type="submit" class="submit-button" value="Register">
+            </form>
+                </div>
+        </div>
+
+    </div>
+{% endblock %}

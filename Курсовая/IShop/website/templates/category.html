@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="hot-item">
+        <div class="hot-item-banner">Choose category</div>
+            <div class="hot-item-content">
+                {% for item in categories%}
+                    <div class="main-flex-items-wrapper">
+                        <div class="main-flex-items-elements">
+                            <p class="main-flex-items-elements-name"> {{ item.name }}</p>
+                            <img width="80%" src="{{ item.image }}" alt="">
+                            <div class="info-container">
+                                <div class="link-container">
+                                    <a href="{% url 'home' %}{{ item.name.lower }}" class="main-flex-items-elements-link victoria-one">Go</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        <div class="hot-item-banner-bottom">
+            <a href="{% url 'home' %}" class="main-flex-items-elements-link victoria-one" style="border-radius: 10px;">Home</a>
+        </div>
+    </div>
+{% endblock %}
